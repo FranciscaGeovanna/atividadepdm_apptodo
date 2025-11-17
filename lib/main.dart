@@ -167,7 +167,7 @@ class _TodoScreenState extends State<TodoScreen> {
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),   // botão mais arredondado (fica lindo)
+                              borderRadius: BorderRadius.circular(30), 
                             ),
                             elevation: 6,
                             shadowColor: const Color.fromARGB(255, 227, 218, 252),
@@ -193,7 +193,7 @@ class _TodoScreenState extends State<TodoScreen> {
           ),
           const SizedBox(height: 8),
 
-          // === Lista de tarefas ===
+          // Lista de tarefas
           Expanded(
             child: _todos.isEmpty
                 ? const Center(
