@@ -35,45 +35,6 @@ class _TodoScreenState extends State<TodoScreen> {
     TodoItem(title: "Fazer a feira", completed: false),
   ];
 
-  void _addTodo() {
-    if (_controller.text.trim().isNotEmpty) {
-      setState(() {
-        _todos.add(TodoItem(title: _controller.text.trim(), completed: false));
-        _controller.clear();
-      });
-    }
-  }
-
-  void _toggleTodo(int index) {
-    setState(() {
-      _todos[index].completed = !_todos[index].completed;
-    });
-  }
-
-  void _deleteTodo(int index) {
-    setState(() {
-      _todos.removeAt(index);
-    });
-  }
-
-  void _clearAll() {
-    setState(() {
-      _todos.clear();
-    });
-  }
-
-  void _showAbout() {
-    showAboutDialog(
-      context: context,
-      applicationName: 'Lista de Tarefas',
-      applicationVersion: '1.0.0',
-      applicationIcon: const Icon(Icons.check_circle_outline, size: 50),
-      children: const [
-        Text('App simples de lista de tarefas criado com Flutter.'),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,10 +56,7 @@ class _TodoScreenState extends State<TodoScreen> {
             color: Colors.white,
             surfaceTintColor: Colors.white,
             icon: const Icon(Icons.more_vert, color: Colors.white),
-            onSelected: (value) {
-              if (value == 'clear') _clearAll();
-              if (value == 'about') _showAbout();
-            },
+            onSelected: null,
             itemBuilder: (context) => [
               const PopupMenuItem(
                 value: 'clear',
@@ -152,14 +110,14 @@ class _TodoScreenState extends State<TodoScreen> {
                         hintText: 'Digite sua tarefa...',
                         border: OutlineInputBorder(),
                       ),
-                      onSubmitted: (_) => _addTodo(),
+                      onSubmitted: null,
                     ),
                     const SizedBox(height: 12),
                     Center(    
                       child: SizedBox(
                         width: 200,
                         child: ElevatedButton.icon(
-                          onPressed: _addTodo,
+                          onPressed: null,
                           label: const Text(
                             'Adicionar Tarefa',
                             style: TextStyle(fontWeight: FontWeight.w600),
@@ -167,7 +125,7 @@ class _TodoScreenState extends State<TodoScreen> {
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30), 
+                              borderRadius: BorderRadius.circular(30),
                             ),
                             elevation: 6,
                             shadowColor: const Color.fromARGB(255, 227, 218, 252),
@@ -213,7 +171,7 @@ class _TodoScreenState extends State<TodoScreen> {
                         child: ListTile(
                           leading: Checkbox(
                             value: todo.completed,
-                            onChanged: (_) => _toggleTodo(index),
+                            onChanged: null,
                             activeColor: Colors.deepPurple,
                           ),
                           title: Text(
@@ -222,13 +180,12 @@ class _TodoScreenState extends State<TodoScreen> {
                               decoration: todo.completed
                                   ? TextDecoration.lineThrough
                                   : null,
-                              color:
-                                  todo.completed ? Colors.grey : Colors.black,
+                              color: todo.completed ? Colors.grey : Colors.black,
                             ),
                           ),
                           trailing: IconButton(
                             icon: const Icon(Icons.delete, color: Colors.red),
-                            onPressed: () => _deleteTodo(index),
+                            onPressed: null,
                           ),
                         ),
                       );
